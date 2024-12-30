@@ -22,6 +22,12 @@ Most of the time this is caused by Zigbee2MQTT not being able to communicate wit
 4. Home Assistant's "Zigbee Home Automation" (ZHA) integration is enabled. Try to disable the ZHA integration and restart the Zigbee2MQTT add-on.
 5. Your hardware adapter is flashed with the router firmware and not with the coordinator firmware.
 6. Your network Zigbee adapter is not accessible over the LAN network.
+7. If using Sonoff Zigbee dongle E (rather than P) - ensure you change Zigbee2MQTT configuration to ezsp. By default it uses Zstack but the dongle E uses a difference architecture hence why ezsp is needed.
+
+Config in Zigbee2MQTT should look like:
+serial:
+  port: /dev/ttyUSB0 note: this should be whichever you declared in your docker-compose. Change as needed.
+  adapter: ezsp
 
 ## Verify that you put the correct port in configuration.yaml
 
